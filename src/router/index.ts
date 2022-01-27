@@ -16,6 +16,45 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  {
+    path: "/user/:id",
+    name: "User",
+    props: true,
+    // components的每个值对应一个命名router-view
+    components: {
+      // 无命名的为default
+      default: () =>
+        import(/* webpackChunkName: "user" */ "../views/User/User.vue"),
+      leftView: () => import("../views/User/Subview/Sider/leftView.vue"),
+      rightView: () => import("../views/User/Subview/Sider/rightView.vue"),
+    },
+    children: [
+      {
+        path: "profile",
+        name: "Profile",
+        // props为对象或函数时，对象或者函数的返回值将被传递给props
+        props: (route) => ({
+          msg: route.name,
+        }),
+        component: () => import("../views/User/Subview/Profile.vue"),
+      },
+      {
+        path: "post",
+        name: "Post",
+        props: (route) => ({
+          msg: route.name,
+        }),
+        component: () => import("../views/User/Subview/Post.vue"),
+      },
+    ],
+  },
+  {
+    path: "/step/:nid",
+    name: "Step",
+    // props为boolean时，route.params将被传递给props
+    props: true,
+    component: () => import("../views/Step.vue"),
+  },
 ];
 
 const router = createRouter({

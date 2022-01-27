@@ -14,5 +14,14 @@ export default defineComponent({
   components: {
     HelloWorld,
   },
+  mounted() {
+    let rs = this.$router.resolve({
+      name: "User",
+      params: {
+        id: "David",
+      },
+    });
+    console.log(rs.href);
+  },
 });
 </script>
