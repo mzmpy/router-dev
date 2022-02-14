@@ -22,6 +22,8 @@ export default defineComponent({
       },
     });
     console.log(rs.href);
+    console.log("router", this.$router);
+    console.log("route", this.$route);
   },
 });
 </script>

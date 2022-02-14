@@ -25,8 +25,8 @@ const routes: Array<RouteRecordRaw> = [
       // 无命名的为default
       default: () =>
         import(/* webpackChunkName: "user" */ "../views/User/User.vue"),
-      leftView: () => import("../views/User/Subview/Sider/leftView.vue"),
-      rightView: () => import("../views/User/Subview/Sider/rightView.vue"),
+      leftView: () => import("../views/User/Sider/leftView.vue"),
+      rightView: () => import("../views/User/Sider/rightView.vue"),
     },
     children: [
       {
